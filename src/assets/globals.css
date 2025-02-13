@@ -50,3 +50,16 @@
 	background-image: var(--background-noise), linear-gradient(to right, #6b1b03, #cd0718, #6b1b03) !important;
 	background-size: 200px, auto;
 }
+.boxShadowBlack {
+	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2) !important;
+}
+.styledLink {
+	color: gray;
+	font-size: 14px;
+	text-decoration: none;
+	display: block;
+	font-family: 'InputSans-ExtraLight', sans-serif !important;
+}
+.styledLink:hover {
+	color: white;
+}

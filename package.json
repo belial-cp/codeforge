@@ -13,6 +13,7 @@
 		"@emotion/react": "^11.14.0",
 		"@emotion/styled": "^11.14.0",
 		"@hookform/resolvers": "^4.0.0",
+		"@mui/icons-material": "^6.4.4",
 		"@mui/material": "^6.4.4",
 		"@mui/material-nextjs": "^6.4.3",
 		"@radix-ui/react-accordion": "^1.2.3",

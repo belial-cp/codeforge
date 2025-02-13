@@ -1,0 +1,19 @@
+.welcomeTitle {
+	background: linear-gradient(to right, #f3936f, #f9705e, #ff4e4e);
+	color: transparent;
+	background-clip: text;
+}
+.buttonContainer::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 300px;
+	height: 300px;
+	background-color: rgba(231, 36, 36, 0.3);
+	border-radius: 50%;
+	filter: blur(7rem);
+	transform: translate(-50%, -50%);
+	transition: background-color 0.3s ease, filter 0.3s ease;
+	z-index: 1;
+}
