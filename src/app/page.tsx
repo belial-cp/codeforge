@@ -1,7 +1,9 @@
+import Header from "@/components/layout/header"
+
 export default function Home() {
 	return (
 		<>
-			<div>Code Forge</div>
+			<Header />
 		</>
 	)
 }

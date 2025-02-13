@@ -1,3 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+	--background-noise: url('https://cdn.prod.website-files.com/6674f0cdb5b7b401612cf015/6674f0cdb5b7b401612cf065_noise-50.avif');
+	--color-black-16: #16171b;
+	--color-black-22: #222326;
+	--color-gray-45: #454549;
+}
+@font-face {
+	font-family: 'InputSans-ExtraLight';
+	src: url('/fonts/InputSans-ExtraLight.ttf') format('truetype');
+	font-style: normal;
+}
+@font-face {
+	font-family: 'InputSansCondensed-Regular';
+	src: url('/fonts/InputSansCondensed-Regular.ttf') format('truetype');
+	font-style: normal;
+}
+.fontInputSansExtraLight {
+	font-family: 'InputSans-ExtraLight', sans-serif !important;
+}
+.fontInputSansCondensedRegular {
+	font-family: 'InputSansCondensed-Regular', sans-serif !important;
+}
+.fontMenlo {
+	font-family: Menlo, monospace !important;
+}
+.backgroundNoiseBlack {
+	background-color: var(--color-black-16) !important;
+	background-image: var(--background-noise) !important;
+	background-size: 200px;
+}
+.backgroundNoiceOrange {
+	background-image: var(--background-noise), linear-gradient(to right, #42312c, #452225) !important;
+	background-size: 200px, auto;
+}
+.backgroundNoiceLightGray {
+	background-color: var(--color-gray-45) !important;
+	background-image: var(--background-noise) !important;
+	background-size: 200px;
+}
+.backgroundNoiceGray {
+	background-color: var(--color-black-22) !important;
+	background-image: var(--background-noise) !important;
+	background-size: 200px;
+}
+.backgroundNoiceRed2x {
+	background-image: var(--background-noise), linear-gradient(to right, #6b1b03, #cd0718, #6b1b03) !important;
+	background-size: 200px, auto;
+}
