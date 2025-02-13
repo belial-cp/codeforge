@@ -2,8 +2,6 @@
 /* importing a next-react module */
 import React from 'react'
 import { useState } from 'react'
-import { useRef } from 'react'
-import { useEffect } from 'react'
 
 /* importing a icons */
 import { Menu, X } from 'lucide-react'
@@ -13,12 +11,7 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Drawer from '@mui/material/Drawer'
 import Stack from '@mui/material/Stack'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemText from '@mui/material/ListItemText'
-import Link from '@mui/material/Link'
 import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 
 /* importing a custom module */
