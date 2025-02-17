@@ -1,29 +1,39 @@
 'use client'
-/* importing a next-react module */
-import React from 'react'
-import { useState } from 'react'
-
-/* importing a icons */
+import React, { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
-
-/* importing a mui module */
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
-import Drawer from '@mui/material/Drawer'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
-
-/* importing a custom module */
 import CodeforgeSvgIconText from '../../../public/svg/logotype-text'
 import { ButtonMUI } from '../ui/button-mui'
 
 export default function Header() {
+	const pages = ['Products', 'Pricing', 'Blog', 'Contact']
 	const [isMenuOpen, setMenuOpen] = useState(false)
+	const [isSmallScreen, setIsSmallScreen] = useState(false)
+
 	const handleMenuClick = () => {
 		setMenuOpen(prev => !prev)
 	}
-	const pages = ['Products', 'Pricing', 'Blog', 'Contact']
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsSmallScreen(window.innerWidth < 900)
+			if (window.innerWidth >= 900) {
+				setMenuOpen(false)
+			}
+		}
+
+		window.addEventListener('resize', handleResize)
+		handleResize()
+
+		return () => {
+			window.removeEventListener('resize', handleResize)
+		}
+	}, [])
+
 	return (
 		<>
 			<AppBar position='fixed' className='backgroundNoiseBlack'>
@@ -68,52 +78,52 @@ export default function Header() {
 							Join
 						</Button>
 					</Stack>
-					<Button onClick={handleMenuClick} sx={{ display: { xs: 'flex', md: 'none' }, backgroundColor: 'transparent' }}>
+					<Button disableElevation disableRipple onClick={handleMenuClick} sx={{ display: { xs: 'flex', md: 'none' }, backgroundColor: 'transparent' }}>
 						{isMenuOpen ? <X color='white' /> : <Menu color='white' />}
 					</Button>
 				</Toolbar>
-			</AppBar>
-			<Drawer anchor='top' open={isMenuOpen} onClose={() => setMenuOpen(false)}>
-				<Box className='backgroundNoiseBlack' sx={{ width: 'auto' }}>
-					<Stack direction='column' spacing='10px'>
-						{pages.map(page => (
+				{isMenuOpen && isSmallScreen && (
+					<Box className='backgroundNoiseBlack' sx={{ width: '100%', height: '100vh' }}>
+						<Stack direction='column' spacing='10px'>
+							{pages.map(page => (
+								<Button
+									key={page}
+									className='fontMenlo'
+									variant='text'
+									sx={{
+										backgroundColor: 'transparent',
+										textTransform: 'none',
+										color: '#a3a3a4',
+									}}
+								>
+									{page}
+								</Button>
+							))}
 							<Button
-								key={page}
+								className='fontMenlo'
+								sx={{
+									backgroundColor: 'transparent',
+									textTransform: 'none',
+									color: 'white',
+								}}
+							>
+								Log in
+							</Button>
+							<Button
 								className='fontMenlo'
 								variant='text'
 								sx={{
 									backgroundColor: 'transparent',
 									textTransform: 'none',
-									color: '#a3a3a4',
+									color: '#EA4848',
 								}}
 							>
-								{page}
+								Join
 							</Button>
-						))}
-						<Button
-							className='fontMenlo'
-							sx={{
-								backgroundColor: 'transparent',
-								textTransform: 'none',
-								color: 'white',
-							}}
-						>
-							Log in
-						</Button>
-						<Button
-							className='fontMenlo'
-							variant='text'
-							sx={{
-								backgroundColor: 'transparent',
-								textTransform: 'none',
-								color: '#EA4848',
-							}}
-						>
-							Join
-						</Button>
-					</Stack>
-				</Box>
-			</Drawer>
+						</Stack>
+					</Box>
+				)}
+			</AppBar>
 		</>
 	)
 }

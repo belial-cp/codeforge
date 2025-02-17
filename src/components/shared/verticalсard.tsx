@@ -14,7 +14,7 @@ interface VerticalCardProps {
 
 const VerticalCard: React.FC<VerticalCardProps> = ({ icon: IconComponent, heading, description }) => {
 	return (
-		<Box className='backgroundNoiceGray boxShadowBlack' sx={{ borderRadius: '20px' }}>
+		<Box className='backgroundNoiceGray boxShadowBlack' sx={{ borderRadius: '20px', flexGrow: 1 }}>
 			<Grid container spacing={0}>
 				<Grid size={12} sx={{ p: '50px' }}>
 					<Box className='backgroundNoiceLightGray' sx={{ backgroundColor: '#FF4D4D', borderRadius: '8px', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

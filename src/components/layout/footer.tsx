@@ -10,12 +10,13 @@ import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail'
+import AccessibleForwardIcon from '@mui/icons-material/AccessibleForward';
 
 /* importing a custom module */
 import CodeforgeSvgIconText from '../../../public/svg/logotype-text'
 
 const socialMediaLinks = {
-	github: 'https://github.com/belial-cp',
+	github: 'https://github.com/belial-cp/codeforge',
 	gmail: 'j@cipherpol.ru',
 }
 const footerLinks = [
@@ -67,10 +68,16 @@ export default function Footer() {
 							SOCIAL MEDIA
 						</Typography>
 						<IconButton aria-label='GitHub' color='default' component='a' href={socialMediaLinks.github}>
-							<GitHubIcon />
+							<GitHubIcon sx={{ color: 'gray', '&:hover': { color: 'white' } }} />
 						</IconButton>
 						<IconButton aria-label='Gmail' color='default' component='a' href={socialMediaLinks.gmail}>
-							<AlternateEmailIcon />
+							<AlternateEmailIcon sx={{ color: 'gray', '&:hover': { color: 'white' } }} />
+						</IconButton>
+						<IconButton aria-label='GitHub' color='default' component='a' href={socialMediaLinks.github}>
+							<GitHubIcon sx={{ color: 'gray', '&:hover': { color: 'white' } }} />
+						</IconButton>
+						<IconButton aria-label='GitHub' color='default' component='a' href={socialMediaLinks.github}>
+							<GitHubIcon sx={{ color: 'gray', '&:hover': { color: 'white' } }} />
 						</IconButton>
 					</Grid>
 				</Grid>

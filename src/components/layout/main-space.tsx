@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid2'
 
 /* importing a custom module */
+import DividerSvg from '../../../public/svg/divider'
 import styles from '../../styles/mainSpace.module.css'
 import HorizontalCard from '../shared/horizontalcard'
 import VerticalCard from '../shared/verticalсard'
@@ -23,7 +24,7 @@ export default function MainSpace() {
 		<>
 			<Container className='backgroundNoiseBlack' maxWidth={false} sx={{ borderBottom: '1px solid rgba(128, 128, 128, 0.5)' }}>
 				<Container>
-					<Grid container spacing={0} sx={{ py: '15%' }}>
+					<Grid container spacing={0} sx={{ py: '25%' }}>
 						<Grid size={1} sx={{ borderBottom: '1px dashed rgba(128, 128, 128, 0.5)', borderRight: '1px dashed rgba(128, 128, 128, 0.5)', py: '25px' }} />
 						<Grid size={{ md: 3, xs: 2 }} sx={{ borderBottom: '1px dashed rgba(128, 128, 128, 0.5)' }} />
 						<Grid size={{ md: 4, xs: 6 }} sx={{ borderBottom: '1px dashed rgba(128, 128, 128, 0.5)', borderLeft: '1px dashed rgba(128, 128, 128, 0.5)', borderRight: '1px dashed rgba(128, 128, 128, 0.5)' }} />
@@ -33,7 +34,7 @@ export default function MainSpace() {
 						<Grid size={1} sx={{ borderRight: '1px dashed rgba(128, 128, 128, 0.5)' }} />
 						<Grid size={10}>
 							<Box sx={{ position: 'relative' }}>
-								<Typography sx={{ fontSize: { lg: '80px', md: '70px', xs: '50px' } }} className={`${styles.welcomeTitle} fontInputSansCondensedRegular`} variant='h2' align='center'>
+								<Typography sx={{ fontSize: { lg: '80px', md: '70px', xs: '50px' }, p: '10px' }} className={`${styles.welcomeTitle} fontInputSansCondensedRegular`} variant='h2' align='center'>
 									Welcome to Code Forge
 								</Typography>
 								<svg
@@ -58,7 +59,7 @@ export default function MainSpace() {
 						<Grid size={1} sx={{ borderBottom: '1px dashed rgba(128, 128, 128, 0.5)', borderTop: '1px dashed rgba(128, 128, 128, 0.5)', borderRight: '1px dashed rgba(128, 128, 128, 0.5)' }} />
 						<Grid size={10} sx={{ borderBottom: '1px dashed rgba(128, 128, 128, 0.5)', borderTop: '1px dashed rgba(128, 128, 128, 0.5)' }}>
 							<Box>
-								<Typography sx={{ fontSize: { lg: '24px', md: '20px', xs: '16px' }, color: 'white' }} className='fontInputSansExtraLight' variant='h5' align='center'>
+								<Typography sx={{ fontSize: { lg: '24px', md: '20px', xs: '16px' }, color: 'white', p: '10px' }} className='fontInputSansExtraLight' variant='h5' align='center'>
 									Create, learn, and implement ideas with ease! Code Forge: Your key to simple and effective programming!
 								</Typography>
 							</Box>
@@ -118,16 +119,65 @@ export default function MainSpace() {
 				<Container disableGutters>
 					<Grid container spacing={4}>
 						<Grid size={{ xs: 12, md: 12, lg: 12 }}>
-							<HorizontalCard icon={SquareFunction} heading='Sharpen your coding skills' description="Challenge yourself on small coding exercises called 'kata'. Each kata is crafted by the community to help you strengthen different coding techniques. Master your current language of choice, or quickly pick up any of the 55+ programming languages supported." />
+							<HorizontalCard imageUrl={'https://jjji.ru/900x500'} icon={SquareFunction} heading='Random text' description='Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.' />
 						</Grid>
-						<Grid size={{ xs: 12, md: 6, lg: 6 }}>
-							<VerticalCard icon={SquareFunction} heading='Sharpen your coding skills' description="Challenge yourself on small coding exercises called 'kata'. Each kata is crafted by the community to help you strengthen different coding techniques. Master your current language of choice, or quickly pick up any of the 55+ programming languages supported." />
+						<Grid size={{ xs: 12, md: 6, lg: 4 }}>
+							<VerticalCard icon={SquareFunction} heading='Random text' description='Nemo enim ipsam voluptatem, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat..' />
 						</Grid>
-						<Grid size={{ xs: 12, md: 6, lg: 6 }}>
-							<VerticalCard icon={SquareFunction} heading='Sharpen your coding skills' description="Challenge yourself on small coding exercises called 'kata'. Each kata is crafted by the community to help you strengthen different coding techniques. Master your current language of choice, or quickly pick up any of the 55+ programming languages supported." />
+						<Grid size={{ xs: 12, md: 6, lg: 4 }}>
+							<VerticalCard icon={SquareFunction} heading='random text random text' description='Nemo enim ipsam voluptatem, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat..' />
+						</Grid>
+						<Grid size={{ xs: 12, md: 6, lg: 4 }}>
+							<VerticalCard icon={SquareFunction} heading='random text random text' description='Nemo enim ipsam voluptatem, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat..' />
 						</Grid>
 					</Grid>
 				</Container>
+				<Container sx={{ py: '50px' }}>
+					<Typography className='fontInputSansExtraLight' variant='h2' sx={{ color: 'white', textAlign: 'center' }}>
+						An engaged software development community
+					</Typography>
+					<Typography className='fontInputSansExtraLight' variant='h5' sx={{ color: 'white', textAlign: 'center' }}>
+						Codewars is a collective effort by its users. They are creators—authoring kata to teach various techniques, solving kata with solutions that enlighten others, and commenting with constructive feedback.
+					</Typography>
+				</Container>
+				<Container
+					className='backgroundNoiceRed2x'
+					sx={{
+						flexDirection: { xs: 'column', md: 'row' },
+						p: '50px',
+						borderRadius: '20px',
+					}}
+				>
+					<Grid container spacing={4}>
+						<Grid size={{ xs: 12, md: 4, lg: 4 }}>
+							<Typography className='fontInputSansExtraLight' variant='h2' sx={{ color: 'white', textAlign: 'center' }}>
+								75K+
+							</Typography>
+							<Typography className='fontInputSansExtraLight' variant='subtitle2' sx={{ color: 'white', textAlign: 'center' }}>
+								Community members added every month
+							</Typography>
+						</Grid>
+						<Grid size={{ xs: 12, md: 4, lg: 4 }}>
+							<Typography className='fontInputSansExtraLight' variant='h2' sx={{ color: 'white', textAlign: 'center' }}>
+								1M+
+							</Typography>
+							<Typography className='fontInputSansExtraLight' variant='subtitle2' sx={{ color: 'white', textAlign: 'center' }}>
+								Kata completed every month
+							</Typography>
+						</Grid>
+						<Grid size={{ xs: 12, md: 4, lg: 4 }}>
+							<Typography className='fontInputSansExtraLight' variant='h2' sx={{ color: 'white', textAlign: 'center' }}>
+								12K+
+							</Typography>
+							<Typography className='fontInputSansExtraLight' variant='subtitle2' sx={{ color: 'white', textAlign: 'center' }}>
+								Kata created by our community
+							</Typography>
+						</Grid>
+					</Grid>
+				</Container>
+				<Box sx={{ p: '50px' }}>
+					<DividerSvg />
+				</Box>
 			</Container>
 		</>
 	)

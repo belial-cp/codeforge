@@ -10,9 +10,10 @@ interface HorizontalCardProps {
 	icon: React.ComponentType<{ size: number; color: string }>
 	heading: string
 	description: string
+	imageUrl: string
 }
 
-const HorizontalCard: React.FC<HorizontalCardProps> = ({ icon: IconComponent, heading, description }) => {
+const HorizontalCard: React.FC<HorizontalCardProps> = ({ icon: IconComponent, heading, description, imageUrl }) => {
 	return (
 		<Box className='backgroundNoiceOrange boxShadowBlack' sx={{ borderRadius: '20px' }}>
 			<Grid container spacing={0}>
@@ -28,8 +29,8 @@ const HorizontalCard: React.FC<HorizontalCardProps> = ({ icon: IconComponent, he
 					</Typography>
 				</Grid>
 				<Grid size={{ md: 6, xs: 12 }} sx={{ pr: { xs: '50px', lg: '0' }, pl: { xs: '50px', lg: '50px' }, pt: { xs: '50px', lg: '50px' }, pb: { xs: '0', lg: '50px' } }}>
-					<Box sx={{ borderRadius: '20px' }}>
-						<img src='https://jjji.ru/900x500' alt='вап' />
+					<Box sx={{ borderRadius: { xs: '10px', sm: '15px', md: '20px' } }}>
+						<img src={imageUrl} alt='image' style={{ width: '100%', borderRadius: 'inherit' }} />
 					</Box>
 				</Grid>
 			</Grid>
