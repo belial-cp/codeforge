@@ -1,6 +1,6 @@
 export const user = {
-	name: 'belial-cp',
-	email: 'j@cipherpol.ru',
+	name: 'test',
+	email: 'incognito@gmail.com',
 	avatar: '/image/test-avatar.png',
-	abbreviation: 'CF'
+	abbreviation: 'CF',
 }

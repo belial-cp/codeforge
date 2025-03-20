@@ -1,26 +1,15 @@
-'use client'
 import * as React from 'react'
-
 import { ChevronsUpDown } from 'lucide-react'
-import { Plus } from 'lucide-react'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
+import { Mode, modes } from '@/data/dev-mode'
 
-import { DropdownMenu } from '@/components/ui/dropdown-menu'
-import { DropdownMenuContent } from '@/components/ui/dropdown-menu'
-import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
-import { DropdownMenuLabel } from '@/components/ui/dropdown-menu'
-import { DropdownMenuSeparator } from '@/components/ui/dropdown-menu'
-import { DropdownMenuShortcut } from '@/components/ui/dropdown-menu'
-import { DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { SidebarMenu } from '@/components/ui/sidebar'
-import { SidebarMenuButton } from '@/components/ui/sidebar'
-import { SidebarMenuItem } from '@/components/ui/sidebar'
-import { useSidebar } from '@/components/ui/sidebar'
+interface DevModeSwitcherProps {
+	activeTeam: Mode
+	setActiveTeam: React.Dispatch<React.SetStateAction<Mode>>
+}
 
-import { modes } from '@/data/dev-mode'
-
-export function DevModeSwitcher() {
-	const { isMobile } = useSidebar()
-	const [activeTeam, setActiveTeam] = React.useState(modes[0])
+export function DevModeSwitcher({ activeTeam, setActiveTeam }: DevModeSwitcherProps) {
 	return (
 		<SidebarMenu>
 			<SidebarMenuItem>
@@ -46,7 +35,6 @@ export function DevModeSwitcher() {
 										<mode.logo className='size-4 shrink-0' />
 									</div>
 									{mode.name}
-									<DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
 								</DropdownMenuItem>
 							</div>
 						))}
