@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { AppSidebar } from '@/components/app-sidebar'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import axios from 'axios'
 import MessageInput from '@/components/shared/message-input'
 import ChatMessages from '@/components/shared/chat-message'
 
@@ -16,7 +17,7 @@ interface Message {
 export default function Page() {
 	const [messages, setMessages] = useState<Message[]>([])
 
-	const handleSendMessage = (content: string) => {
+	const handleSendMessage = async (content: string) => {
 		if (content.trim()) {
 			const newMessage: Message = {
 				id: Date.now().toString(),
@@ -27,16 +28,21 @@ export default function Page() {
 
 			setMessages(prev => [...prev, newMessage])
 
-			// Simulate AI response (you would replace this with actual API call)
-			setTimeout(() => {
+			try {
+				const response = await axios.post('http://127.0.0.1:5000/generate', {
+					prompt: content,
+				})
+
 				const aiResponse: Message = {
 					id: (Date.now() + 1).toString(),
-					content: `You said: "${content}"`,
+					content: response.data.response,
 					sender: 'ai',
 					timestamp: new Date(),
 				}
 				setMessages(prev => [...prev, aiResponse])
-			}, 1000)
+			} catch (error) {
+				console.error('Error generating response:', error)
+			}
 		}
 	}
 

@@ -1,6 +1,6 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_name = "../model"
+model_name = "Qwen/Qwen2.5-Coder-0.5B-Instruct"
 
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
@@ -9,9 +9,9 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-prompt = "write a quick sort algorithm."
+prompt = "Whats your name?."
 messages = [
-    {"role": "system", "content": "."},
+    {"role": "system", "content": "Your name is Code forge."},
     {"role": "user", "content": prompt}
 ]
 text = tokenizer.apply_chat_template(
@@ -30,3 +30,4 @@ generated_ids = [
 ]
 
 response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
+print(response)

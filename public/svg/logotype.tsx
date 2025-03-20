@@ -3,8 +3,8 @@ const CodeforgeSvgIcon = () => {
 		<svg
 			xmlns='http://www.w3.org/2000/svg'
 			version='1.1'
-			width='100px'
-			height='100px'
+			width='178px'
+			height='178px'
 			style={{
 				shapeRendering: 'geometricPrecision',
 				textRendering: 'geometricPrecision',
