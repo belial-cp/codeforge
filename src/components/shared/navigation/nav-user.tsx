@@ -6,8 +6,6 @@ import { ChevronsUpDown } from 'lucide-react'
 import { CreditCard } from 'lucide-react'
 import { LogOut } from 'lucide-react'
 import { Sparkles } from 'lucide-react'
-import { Sun } from 'lucide-react'
-import { Moon } from 'lucide-react'
 
 import { Avatar } from '@/components/ui/avatar'
 import { AvatarFallback } from '@/components/ui/avatar'
@@ -24,12 +22,10 @@ import { DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { SidebarMenu } from '@/components/ui/sidebar'
 import { SidebarMenuButton } from '@/components/ui/sidebar'
 import { SidebarMenuItem } from '@/components/ui/sidebar'
-import { useSidebar } from '@/components/ui/sidebar'
 
 import { user } from '@/data/user'
 
 export function NavUser() {
-	// const { isMobile } = useSidebar()
 	return (
 		<SidebarMenu>
 			<SidebarMenuItem>

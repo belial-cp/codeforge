@@ -15,8 +15,8 @@ import Grid from '@mui/material/Grid2'
 /* importing a custom module */
 import DividerSvg from '../../../public/svg/divider'
 import styles from '../../styles/mainSpace.module.css'
-import HorizontalCard from '../shared/horizontalcard'
-import VerticalCard from '../shared/verticalсard'
+import HorizontalCard from '../containers/horizontalcard'
+import VerticalCard from '../containers/verticalсard'
 
 export default function MainSpace() {
 	const router = useRouter()

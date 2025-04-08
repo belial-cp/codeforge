@@ -1,13 +1,16 @@
 'use client'
 
 import * as React from 'react'
-import { Sidebar, SidebarHeader, SidebarContent, SidebarFooter } from '@/components/ui/sidebar'
-import { DevModeSwitcher } from './nav-dev-mods'
-import { NavAdditionally } from './nav-additionally'
-import { NavUser } from './nav-user'
-import { NavCommunication } from './nav-сommunication'
-import { NavStartupDev } from './nav-startup-dev'
-import { NavEnterpriseDev } from './nav-enterprise-dev'
+import { Sidebar } from '@/components/ui/sidebar'
+import { SidebarHeader } from '@/components/ui/sidebar'
+import { SidebarContent } from '@/components/ui/sidebar'
+import { SidebarFooter } from '@/components/ui/sidebar'
+import { DevModeSwitcher } from '../shared/navigation/nav-dev-mods'
+import { NavAdditionally } from '../shared/navigation/nav-additionally'
+import { NavUser } from '../shared/navigation/nav-user'
+import { NavCommunication } from '../shared/navigation/nav-сommunication'
+import { NavStartupDev } from '../shared/navigation/nav-startup-dev'
+import { NavEnterpriseDev } from '../shared/navigation/nav-enterprise-dev'
 
 import { modes } from '@/data/dev-mode'
 

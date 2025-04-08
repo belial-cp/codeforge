@@ -1,48 +1,29 @@
 'use client'
 
-import { useState } from 'react'
-import { AppSidebar } from '@/components/app-sidebar'
-import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
-import axios from 'axios'
-import MessageInput from '@/components/shared/message-input'
-import ChatMessages from '@/components/shared/chat-message'
+import * as React from 'react'
+import { AppSidebar } from '@/components/layout/app-sidebar'
+import { SidebarInset } from '@/components/ui/sidebar'
+import { SidebarProvider } from '@/components/ui/sidebar'
+import HederSmall from '@/components/layout/header-small'
+import CommunicationDev from '@/components/layout/dev-modes/communication'
+import StartupDev from '@/components/layout/dev-modes/startup-dev'
+import EnterpriseDev from '@/components/layout/dev-modes/enterprise-dev'
 
-interface Message {
-	id: string
-	content: string
-	sender: 'user' | 'ai'
-	timestamp: Date
-}
+import { modes } from '@/data/dev-mode'
 
 export default function Page() {
-	const [messages, setMessages] = useState<Message[]>([])
+	const [activeTeam, setActiveTeam] = React.useState(modes[0])
 
-	const handleSendMessage = async (content: string) => {
-		if (content.trim()) {
-			const newMessage: Message = {
-				id: Date.now().toString(),
-				content,
-				sender: 'user',
-				timestamp: new Date(),
-			}
-
-			setMessages(prev => [...prev, newMessage])
-
-			try {
-				const response = await axios.post('http://127.0.0.1:5000/generate', {
-					prompt: content,
-				})
-
-				const aiResponse: Message = {
-					id: (Date.now() + 1).toString(),
-					content: response.data.response,
-					sender: 'ai',
-					timestamp: new Date(),
-				}
-				setMessages(prev => [...prev, aiResponse])
-			} catch (error) {
-				console.error('Error generating response:', error)
-			}
+	const renderDevModeComponent = () => {
+		switch (activeTeam.name) {
+			case 'Communication':
+				return <CommunicationDev />
+			case 'Startup dev.':
+				return <StartupDev />
+			case 'Enterprise dev.':
+				return <EnterpriseDev />
+			default:
+				return <CommunicationDev />
 		}
 	}
 
@@ -51,20 +32,8 @@ export default function Page() {
 			<AppSidebar />
 			<SidebarInset>
 				<div className='h-screen flex flex-col'>
-					<header className='flex h-[64px] shrink-0 items-center border-b px-4'>
-						<SidebarTrigger className='-ml-1' />
-					</header>
-
-					<main className='flex-grow overflow-y-auto flex justify-center p-4'>
-						<div className='w-full max-w-3xl'>
-							<ChatMessages messages={messages} />
-						</div>
-					</main>
-					<footer className='flex justify-center py-4 px-4 bg-transparent'>
-						<div className='w-full max-w-3xl'>
-							<MessageInput onSendMessage={handleSendMessage} />
-						</div>
-					</footer>
+					<HederSmall />
+					{renderDevModeComponent()}
 				</div>
 			</SidebarInset>
 		</SidebarProvider>

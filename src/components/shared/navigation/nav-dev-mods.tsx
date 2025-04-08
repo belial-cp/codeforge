@@ -1,8 +1,15 @@
 import * as React from 'react'
 import { ChevronsUpDown } from 'lucide-react'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
-import { Mode, modes } from '@/data/dev-mode'
+import { DropdownMenu } from '@/components/ui/dropdown-menu'
+import { DropdownMenuContent } from '@/components/ui/dropdown-menu'
+import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
+import { DropdownMenuLabel } from '@/components/ui/dropdown-menu'
+import { DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { SidebarMenu } from '@/components/ui/sidebar'
+import { SidebarMenuButton } from '@/components/ui/sidebar'
+import { SidebarMenuItem } from '@/components/ui/sidebar'
+import { Mode } from '@/data/dev-mode'
+import { modes } from '@/data/dev-mode'
 
 interface DevModeSwitcherProps {
 	activeTeam: Mode
