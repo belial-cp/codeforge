@@ -1,9 +1,7 @@
 'use client'
-
 import { useState } from 'react'
 import ChatMessages from '@/components/shared/chat-message'
 import MessageInput from '@/components/shared/message-input'
-import axios from 'axios'
 
 interface Message {
 	id: string
@@ -13,10 +11,12 @@ interface Message {
 }
 
 export default function CommunicationDev() {
-	const port = 'http://127.0.0.1:5000/generate'
+	const port = 'http://127.0.0.1:5000/generate' // Порт вашего Flask сервера
 	const [messages, setMessages] = useState<Message[]>([])
-	const handleSendMessage = async (content: string) => {http://localhost:3000/
+
+	const handleSendMessage = async (content: string) => {
 		if (content.trim()) {
+			// Отправка сообщения от пользователя
 			const newMessage: Message = {
 				id: Date.now().toString(),
 				content,
@@ -26,23 +26,58 @@ export default function CommunicationDev() {
 
 			setMessages(prev => [...prev, newMessage])
 
+			// Заготовка для AI-сообщения
+			const aiMessage: Message = {
+				id: (Date.now() + 1).toString(),
+				content: '',
+				sender: 'ai',
+				timestamp: new Date(),
+			}
+
+			setMessages(prev => [...prev, aiMessage])
+
 			try {
-				const response = await axios.post(port, {
-					prompt: content,
+				const response = await fetch(port, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						prompt: content,
+					}),
 				})
 
-				const aiResponse: Message = {
-					id: (Date.now() + 1).toString(),
-					content: response.data.response,
-					sender: 'ai',
-					timestamp: new Date(),
+				if (!response.body) throw new Error('No response body')
+
+				const reader = response.body.getReader()
+				const decoder = new TextDecoder('utf-8')
+				let buffer = ''
+
+				while (true) {
+					const { value, done } = await reader.read()
+					if (done) break
+
+					buffer += decoder.decode(value, { stream: true })
+
+					const lines = buffer.split('\n')
+					buffer = lines.pop() || ''
+
+					for (const line of lines) {
+						if (line.trim() === '') continue
+
+						const parsed = JSON.parse(line)
+						const token = parsed.response
+
+						// Обновляем сообщение с новым текстом
+						setMessages(prev => prev.map(msg => (msg.id === aiMessage.id ? { ...msg, content: msg.content + token } : msg)))
+					}
 				}
-				setMessages(prev => [...prev, aiResponse])
 			} catch (error) {
-				console.error('Error generating response:', error)
+				console.error('Error streaming response:', error)
 			}
 		}
 	}
+
 	return (
 		<>
 			<main className='flex-grow overflow-y-auto flex justify-center p-4'>

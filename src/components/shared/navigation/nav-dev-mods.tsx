@@ -35,9 +35,9 @@ export function DevModeSwitcher({ activeTeam, setActiveTeam }: DevModeSwitcherPr
 					</DropdownMenuTrigger>
 					<DropdownMenuContent side='right' align='start' sideOffset={5} className='bg-white min-w-56 rounded-[8px]'>
 						<DropdownMenuLabel className='text-xs text-[#71717a]'>Dev Mode</DropdownMenuLabel>
-						{modes.map((mode, index) => (
+						{modes.map(mode => (
 							<div className='rounded-[8px] hover:bg-[#F4F4F5]' key={mode.name}>
-								<DropdownMenuItem className='gap-2 p-2' key={mode.name} onClick={() => setActiveTeam(mode)}>
+								<DropdownMenuItem className='gap-2 p-2' onClick={() => setActiveTeam(mode)}>
 									<div className='flex size-6 items-center justify-center rounded-[4px] border text-[bg-[#18181b]'>
 										<mode.logo className='size-4 shrink-0' />
 									</div>

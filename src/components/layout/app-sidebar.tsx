@@ -12,11 +12,14 @@ import { NavCommunication } from '../shared/navigation/nav-сommunication'
 import { NavStartupDev } from '../shared/navigation/nav-startup-dev'
 import { NavEnterpriseDev } from '../shared/navigation/nav-enterprise-dev'
 
-import { modes } from '@/data/dev-mode'
+import { Mode } from '@/data/dev-mode'
 
-export function AppSidebar({ ...props }) {
-	const [activeTeam, setActiveTeam] = React.useState(modes[0])
+interface AppSidebarProps {
+	activeTeam: Mode
+	setActiveTeam: React.Dispatch<React.SetStateAction<Mode>>
+}
 
+export function AppSidebar({ activeTeam, setActiveTeam, ...props }: AppSidebarProps) {
 	return (
 		<Sidebar collapsible='icon' {...props}>
 			<SidebarHeader>
