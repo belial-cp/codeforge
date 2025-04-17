@@ -1,4 +1,3 @@
-/* importing a mui module */
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid2'
 import Typography from '@mui/material/Typography'
@@ -6,13 +5,10 @@ import Link from 'next/link'
 import Chip from '@mui/material/Chip'
 import Box from '@mui/material/Box'
 
-/* importing a icons */
 import IconButton from '@mui/material/IconButton'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail'
-import AccessibleForwardIcon from '@mui/icons-material/AccessibleForward';
 
-/* importing a custom module */
 import CodeforgeSvgIconText from '../../../public/svg/logotype-text'
 
 const socialMediaLinks = {

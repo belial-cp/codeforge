@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { CodeConfigProvider } from './code-config-context'
-import { ConfigDisplay } from '@/components/shared/navigation/config-displat'
+import { ConfigDisplay } from '@/components/layout/dev-modes/startupdev/config-display'
 
 export default function StartupDev() {
 	return (

@@ -14,7 +14,7 @@ import { Slider } from '@/components/ui/slider'
 import { SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar'
 import { Textarea } from '@/components/ui/textarea'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
-import { useCodeConfig } from '@/components/layout/dev-modes/code-config-context'
+import { useCodeConfig } from '@/components/layout/dev-modes/startupdev/code-config-context'
 
 const programmingLanguages = ['python', 'javascript', 'typescript', 'java', 'c++', 'c#', 'go', 'rust', 'php', 'ruby']
 

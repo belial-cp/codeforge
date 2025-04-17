@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
-import ChatMessages from '@/components/shared/chat-message'
-import MessageInput from '@/components/shared/message-input'
+import ChatMessages from '@/components/layout/dev-modes/communicationdev/chat-message'
+import MessageInput from '@/components/layout/dev-modes/communicationdev/message-input'
 
 interface Message {
 	id: string
@@ -11,12 +11,11 @@ interface Message {
 }
 
 export default function CommunicationDev() {
-	const port = 'http://127.0.0.1:5000/generate' // Порт вашего Flask сервера
+	const port = 'http://127.0.0.1:5000/generate'
 	const [messages, setMessages] = useState<Message[]>([])
 
 	const handleSendMessage = async (content: string) => {
 		if (content.trim()) {
-			// Отправка сообщения от пользователя
 			const newMessage: Message = {
 				id: Date.now().toString(),
 				content,
@@ -26,7 +25,6 @@ export default function CommunicationDev() {
 
 			setMessages(prev => [...prev, newMessage])
 
-			// Заготовка для AI-сообщения
 			const aiMessage: Message = {
 				id: (Date.now() + 1).toString(),
 				content: '',
@@ -68,7 +66,6 @@ export default function CommunicationDev() {
 						const parsed = JSON.parse(line)
 						const token = parsed.response
 
-						// Обновляем сообщение с новым текстом
 						setMessages(prev => prev.map(msg => (msg.id === aiMessage.id ? { ...msg, content: msg.content + token } : msg)))
 					}
 				}

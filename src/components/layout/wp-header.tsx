@@ -1,13 +1,15 @@
 'use client'
+
 import React, { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import CodeforgeSvgIconText from '../../../public/svg/logotype-text'
+
 import { ButtonMUI } from '../ui/button-mui'
+import { Menu, X } from 'lucide-react'
 
 export default function Header() {
 	const pages = ['Products', 'Pricing', 'Blog', 'Contact']

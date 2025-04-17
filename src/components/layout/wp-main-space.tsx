@@ -1,18 +1,15 @@
 'use client'
-/* importing a next-react module */
+
 import { useRouter } from 'next/navigation'
 
-/* importing a icons */
 import { SquareFunction } from 'lucide-react'
 
-/* importing a mui module */
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid2'
 
-/* importing a custom module */
 import DividerSvg from '../../../public/svg/divider'
 import styles from '../../styles/mainSpace.module.css'
 import HorizontalCard from '../containers/horizontalcard'

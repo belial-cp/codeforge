@@ -1,12 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { format } from 'date-fns'
-import { User, Bot } from 'lucide-react'
-import { Copy, Trash, Edit } from 'lucide-react' 
-
-
-import CodeforgeSvgIcon from '../../../public/svg/logotype'
+import { Bot } from 'lucide-react'
 
 interface Message {
 	id: string
@@ -23,8 +18,6 @@ export default function ChatMessages({ messages }: ChatMessagesProps) {
 	const messagesEndRef = useRef<HTMLDivElement>(null)
 	const [hoveredMessage, setHoveredMessage] = useState<string | null>(null)
 
-
-	// Auto-scroll to bottom when new messages arrive
 	useEffect(() => {
 		messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
 	}, [messages])
@@ -53,7 +46,6 @@ export default function ChatMessages({ messages }: ChatMessagesProps) {
 
 						<div className={`text-[16px] ${message.sender === 'user' ? 'p-3 bg-[#F2F2F2] text-[#364153] rounded-[20px]' : 'text-[#364153]'}`}>
 							<p className=''>{message.content}</p>
-							{/* <div className={`text-xs mt-1 ${message.sender === 'user' ? 'text-primary-foreground/70' : 'text-muted-foreground'}`}>{format(message.timestamp, 'HH:mm')}</div> */}
 						</div>
 					</div>
 				</div>

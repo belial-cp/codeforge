@@ -11,12 +11,11 @@ export default function MessageInput({ onSendMessage }: MessageInputProps) {
 	const [message, setMessage] = useState('')
 	const textareaRef = useRef<HTMLTextAreaElement>(null)
 
-	// Auto-resize the textarea based on content
 	useEffect(() => {
 		const textarea = textareaRef.current
 		if (textarea) {
 			textarea.style.height = 'auto'
-			const newHeight = Math.min(textarea.scrollHeight, 150) // Max height 150px
+			const newHeight = Math.min(textarea.scrollHeight, 150)
 			textarea.style.height = `${newHeight}px`
 		}
 	}, [message])
@@ -25,7 +24,6 @@ export default function MessageInput({ onSendMessage }: MessageInputProps) {
 		if (message.trim()) {
 			onSendMessage(message.trim())
 			setMessage('')
-			// Reset height after sending
 			if (textareaRef.current) {
 				textareaRef.current.style.height = 'auto'
 			}

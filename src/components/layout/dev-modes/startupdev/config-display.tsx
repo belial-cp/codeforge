@@ -1,8 +1,7 @@
-// src/components/shared/navigation/config-display.tsx
 'use client'
 
 import * as React from 'react'
-import { useCodeConfig } from '@/components/layout/dev-modes/code-config-context'
+import { useCodeConfig } from '@/components/layout/dev-modes/startupdev/code-config-context'
 import { useEffect, useRef } from 'react'
 import { SyntaxBlock } from '@/components/containers/syntax-block'
 
