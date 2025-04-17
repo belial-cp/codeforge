@@ -1,8 +1,8 @@
+// src/components/layout/dev-modes/code-config-context.tsx
 'use client'
 
 import * as React from 'react'
 
-// Типы для конфигурации
 export interface CodeConfig {
 	language: string
 	indent_style: 'space' | 'tab'
@@ -31,6 +31,7 @@ interface CodeConfigContextType {
 	setUserQuery: React.Dispatch<React.SetStateAction<string>>
 	updateConfig: (key: keyof CodeConfig, value: any) => void
 	generateCode: () => void
+	generatedCode: string
 }
 
 const defaultConfig: CodeConfig = {
@@ -59,15 +60,45 @@ export const CodeConfigContext = React.createContext<CodeConfigContextType | und
 export function CodeConfigProvider({ children }: { children: React.ReactNode }) {
 	const [config, setConfig] = React.useState<CodeConfig>(defaultConfig)
 	const [userQuery, setUserQuery] = React.useState('')
+	const [generatedCode, setGeneratedCode] = React.useState('')
 
 	const updateConfig = React.useCallback((key: keyof CodeConfig, value: any) => {
 		setConfig(prev => ({ ...prev, [key]: value }))
 	}, [])
 
-	const generateCode = React.useCallback(() => {
-		console.log('Generating code with configuration:', config)
-		console.log('User Query:', userQuery)
-		// Здесь вы можете добавить логику генерации кода
+	const generateCode = React.useCallback(async () => {
+		setGeneratedCode('')
+		const requestPayload = { ...config, userQuery }
+
+		try {
+			const res = await fetch('http://localhost:5000/generate', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ prompt: JSON.stringify(requestPayload) }),
+			})
+
+			const reader = res.body?.getReader()
+			const decoder = new TextDecoder('utf-8')
+			if (!reader) return
+
+			while (true) {
+				const { done, value } = await reader.read()
+				if (done) break
+
+				const chunk = decoder.decode(value)
+				const lines = chunk.split('\n').filter(Boolean)
+
+				for (const line of lines) {
+					const json = JSON.parse(line)
+					setGeneratedCode(prev => prev + json.response)
+				}
+			}
+		} catch (err) {
+			console.error('Error generating code:', err)
+			setGeneratedCode('// Error generating code.')
+		}
 	}, [config, userQuery])
 
 	const value = React.useMemo(
@@ -78,8 +109,9 @@ export function CodeConfigProvider({ children }: { children: React.ReactNode }) 
 			setUserQuery,
 			updateConfig,
 			generateCode,
+			generatedCode,
 		}),
-		[config, userQuery, updateConfig, generateCode]
+		[config, userQuery, updateConfig, generateCode, generatedCode]
 	)
 
 	return <CodeConfigContext.Provider value={value}>{children}</CodeConfigContext.Provider>
